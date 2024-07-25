@@ -6,7 +6,7 @@ const ReactFlowPage = dynamic(() => import('~/react-flow/react-flow-page'), {
 
 const Page = () => {
   return (
-    <main>
+    <main className="mx-auto max-w-[1200px]">
       <h1 className="text-xl font-bold">React-flow Playground</h1>
       <ReactFlowPage />
     </main>
