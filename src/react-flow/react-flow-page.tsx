@@ -1,5 +1,7 @@
 'use client';
-import type { Connection } from '@xyflow/react';
+
+import { useCallback } from 'react';
+import styled from 'styled-components';
 import {
   Background,
   Controls,
@@ -11,10 +13,11 @@ import {
   BackgroundVariant,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { useCallback } from 'react';
+import './flow.css';
+import type { Connection } from '@xyflow/react';
 
 const ReactFlowPage = () => {
-  const [nodes, setNodes, onNodesChange] = useNodesState([
+  const [nodes, , onNodesChange] = useNodesState([
     { id: '1', position: { x: 0, y: 0 }, data: { label: '1' } },
     { id: '2', position: { x: 0, y: 100 }, data: { label: '2' } },
     { id: '3', position: { x: 0, y: 200 }, data: { label: '3' } },
@@ -29,7 +32,7 @@ const ReactFlowPage = () => {
   );
 
   return (
-    <div style={{ width: '1200px', height: '600px', margin: '16px 0 0' }}>
+    <Container style={{ width: '1200px', height: '600px', margin: '16px 0 0' }}>
       <ReactFlow
         edges={edges}
         nodes={nodes}
@@ -41,8 +44,15 @@ const ReactFlowPage = () => {
         <MiniMap />
         <Background gap={12} size={1} variant={BackgroundVariant.Dots} />
       </ReactFlow>
-    </div>
+    </Container>
   );
 };
 
 export default ReactFlowPage;
+
+const Container = styled.div`
+  .react-flow-attribution {
+    display: none;
+    pointer-events: none;
+  }
+`;
